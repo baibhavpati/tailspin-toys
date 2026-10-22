@@ -22,6 +22,24 @@ test.describe('Game Listing and Navigation', () => {
       await expect(gameCards.first().getByTestId('game-title')).toBeVisible();
       await expect(gameCards.first().getByTestId('game-title')).not.toBeEmpty();
     });
+
+    await test.step('Verify each game card shows a rating or fallback text', async () => {
+      const gameCards = page.getByTestId('game-card');
+      const cardCount = await gameCards.count();
+
+      for (let index = 0; index < cardCount; index += 1) {
+        const card = gameCards.nth(index);
+        const ratingChip = card.getByTestId('game-rating');
+        const noRatingChip = card.getByTestId('game-rating-empty');
+        const hasRatingChip = (await ratingChip.count()) > 0;
+
+        if (hasRatingChip) {
+          await expect(ratingChip).toContainText('/5');
+        } else {
+          await expect(noRatingChip).toHaveText('No rating yet');
+        }
+      }
+    });
   });
 
   test('should navigate to correct game details page when clicking on a game', async ({ page }) => {
