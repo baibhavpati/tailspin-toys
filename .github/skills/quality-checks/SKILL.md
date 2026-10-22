@@ -2,7 +2,7 @@
 name: quality-checks
 description: Runs this project's unit tests (Vitest), lint (ESLint), and type checks (tsgo + astro check), with guidance for debugging failures before commits, pushes, or merges. Use this skill when running npm run test:unit, npm run lint, or npm run typecheck:all.
 allowed-tools:
-  - shell
+    - shell
 ---
 
 # Quality Checks
@@ -12,7 +12,7 @@ This skill runs unit tests, lint, and type checks for a single Astro application
 ## Quick Reference
 
 | Check | Command | When to Use |
-|------------|----------------------------|-------------|
+| --- | --- | --- |
 | Unit tests (Vitest) | `npm run test:unit` | After any data-layer / transform / helper change |
 | Lint (ESLint) | `npm run lint` | After any TypeScript or Astro change |
 | Type check (tsgo + astro check) | `npm run typecheck:all` | After any TypeScript or Astro change |
@@ -142,3 +142,5 @@ npx vitest run src/lib/games.test.ts
 3. Run unit tests (if data layer / helpers changed): `npm run test:unit`
 4. Verify new functionality has appropriate unit test coverage
 5. Confirm no unit tests were broken, skipped, or disabled
+## Results output formatting
+Upon completion, report each command that ran and whether it passed, failed, or was blocked. Include test counts, durations, errors, warnings, and other metrics only when the tool reports them. Identify the next action for any failure or blocker, and never describe a skipped or incomplete check as passed.
