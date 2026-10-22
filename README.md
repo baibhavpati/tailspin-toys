@@ -35,6 +35,8 @@ npm run dev
 
 `predev` migrates and seeds the local database first. Then navigate to the [website](http://localhost:4321) to see the site!
 
+The home page includes catalog filters for category and publisher so backers can narrow the list before picking a title to support. Multiple category filters can be combined with a single publisher selection using the same form.
+
 To preview a production build instead:
 
 ```bash
