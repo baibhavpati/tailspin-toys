@@ -16,3 +16,10 @@ const { rating } = Astro.props;
         </span>
     </div>
 )}
+{rating === null && (
+    <div class="flex items-center">
+        <span class="bg-slate-700/60 text-slate-300 text-sm px-3 py-1 rounded-full" data-testid="game-rating-empty">
+            No rating yet
+        </span>
+    </div>
+)}
